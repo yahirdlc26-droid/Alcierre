@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Al Cierre · Comida rescatada a precio justo</title>
+  <meta name="description" content="Plataforma de demostración que conecta restaurantes con personas que quieren comprar comida a precio accesible y reducir el desperdicio de alimentos.">
+  <meta name="theme-color" content="#DD6222">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="img/marca/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <!-- Aviso de demostración (siempre visible arriba) -->
+  <div class="aviso-demo" role="note">
+    <strong>Demostración escolar:</strong> las compras son simuladas. No se cobra dinero ni se solicitan datos bancarios.
+  </div>
+
+  <!-- =============== ENCABEZADO =============== -->
+  <header class="encabezado" id="encabezado">
+    <div class="contenedor encabezado__fila">
+      <a href="#inicio" class="marca" aria-label="Ir al inicio">
+        <img class="marca__logo" data-marca-logo src="img/marca/logo.png" alt="" width="44" height="44">
+        <span class="marca__nombre" data-marca-nombre="logo">Al <span class="marca__acento">Cierre</span></span>
+      </a>
+
+      <nav class="navegacion" id="navegacion" aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#restaurantes">Restaurantes</a>
+        <a href="#preguntas">Preguntas</a>
+      </nav>
+
+      <form class="buscador" id="form-buscar" role="search">
+        <label for="campo-buscar" class="solo-lectores">Buscar restaurantes o productos</label>
+        <svg class="icono" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="campo-buscar" type="search" placeholder="Busca hamburguesa, pollo, tortas…" autocomplete="off">
+      </form>
+
+      <button class="boton-carrito" id="abrir-carrito" type="button" aria-label="Abrir carrito">
+        <svg class="icono" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 7h14l-1.5 10.5a2 2 0 0 1-2 1.5h-7a2 2 0 0 1-2-1.5L5 7Z"/><path d="M9 7V6a3 3 0 0 1 6 0v1"/></svg>
+        <span class="boton-carrito__texto">Carrito</span>
+        <span class="contador" id="contador-carrito" aria-live="polite">0</span>
+      </button>
+
+      <button class="boton-menu" id="boton-menu" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navegacion">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- =============== VISTA: INICIO =============== -->
+  <main id="vista-inicio" class="vista">
+    <!-- Inicio / Hero -->
+    <section class="hero" id="inicio" aria-labelledby="titulo-hero">
+      <div class="contenedor hero__grid">
+        <div class="hero__texto">
+          <span class="etiqueta-pill" data-texto="inicio.etiqueta">Rescata comida, ahorra dinero</span>
+          <h1 id="titulo-hero" data-texto="inicio.titulo">La comida que sobra hoy, en tu mesa a mitad de precio.</h1>
+          <p class="hero__parrafo" data-texto="inicio.texto"></p>
+          <div class="hero__acciones">
+            <a href="#restaurantes" class="boton boton--primario boton--grande">Explorar restaurantes</a>
+            <a href="#como-funciona" class="boton boton--contorno boton--grande">¿Cómo funciona?</a>
+          </div>
+          <ul class="hero__cifras" id="hero-cifras"></ul>
+          <p class="nota" id="nota-cifras"></p>
+        </div>
+        <div class="hero__collage" aria-hidden="true">
+          <img class="collage__img collage__img--1" src="img/marca/collage-1.jpg" alt="">
+          <img class="collage__img collage__img--2" src="img/marca/collage-2.jpg" alt="">
+          <img class="collage__img collage__img--3" src="img/marca/collage-3.jpg" alt="">
+          <div class="collage__sello">
+            <strong>-60%</strong>
+            <span>comida de hoy</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cómo funciona -->
+    <section class="seccion seccion--clara" id="como-funciona" aria-labelledby="titulo-como">
+      <div class="contenedor">
+        <header class="seccion__cabecera">
+          <span class="sobretitulo">Paso a paso</span>
+          <h2 id="titulo-como">¿Cómo funciona?</h2>
+          <p>En cuatro pasos rescatas comida deliciosa y pagas mucho menos.</p>
+        </header>
+        <ol class="pasos">
+          <li class="paso">
+            <span class="paso__numero">1</span>
+            <svg class="paso__icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10h18M5 10V20h14V10M4 10l2-6h12l2 6"/><path d="M10 20v-5h4v5"/></svg>
+            <h3>Elige un restaurante</h3>
+            <p>Explora los restaurantes cercanos, su tipo de comida y su horario de recolección.</p>
+          </li>
+          <li class="paso">
+            <span class="paso__numero">2</span>
+            <svg class="paso__icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M12 8v12M4 12h16M12 8c-2-4-6-3-5 0M12 8c2-4 6-3 5 0"/></svg>
+            <h3>Sorpresa o producto</h3>
+            <p>Compra un <strong>paquete sorpresa</strong> con lo del día o elige un <strong>producto específico</strong>.</p>
+          </li>
+          <li class="paso">
+            <span class="paso__numero">3</span>
+            <svg class="paso__icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4 10-10"/></svg>
+            <h3>Confirma tu pedido</h3>
+            <p>Revisa tu carrito, escribe tu nombre y teléfono y recibe un folio de pedido.</p>
+          </li>
+          <li class="paso">
+            <span class="paso__numero">4</span>
+            <svg class="paso__icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <h3>Recoge a tiempo</h3>
+            <p>Llega al restaurante en el horario indicado, muestra tu folio y disfruta.</p>
+          </li>
+        </ol>
+
+        <div class="modalidades">
+          <article class="modalidad modalidad--sorpresa">
+            <span class="insignia insignia--sorpresa">Paquete sorpresa</span>
+            <h3>Lo del día, al mejor precio</h3>
+            <p>Conoces el restaurante, el precio, una descripción general y el horario. El contenido exacto es sorpresa y cambia según lo que haya sobrado.</p>
+          </article>
+          <article class="modalidad modalidad--producto">
+            <span class="insignia insignia--producto">Producto específico</span>
+            <h3>Sabes exactamente qué compras</h3>
+            <p>Ves la foto, la descripción, el precio con descuento y cuántas unidades quedan disponibles hoy.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Restaurantes disponibles -->
+    <section class="seccion" id="restaurantes" aria-labelledby="titulo-restaurantes">
+      <div class="contenedor">
+        <header class="seccion__cabecera seccion__cabecera--izq">
+          <span class="sobretitulo">Hoy en tu ciudad</span>
+          <h2 id="titulo-restaurantes">Restaurantes disponibles</h2>
+          <p>Primero elige un restaurante; dentro verás sus paquetes sorpresa y sus productos.</p>
+        </header>
+
+        <div class="filtros" aria-label="Filtros">
+          <div class="filtros__grupo">
+            <span class="filtros__titulo" id="lbl-categoria">Categoría</span>
+            <div class="chips" id="filtro-categorias" role="group" aria-labelledby="lbl-categoria"></div>
+          </div>
+          <div class="filtros__grupo">
+            <span class="filtros__titulo" id="lbl-modalidad">Modalidad</span>
+            <div class="segmentado" id="filtro-modalidad" role="group" aria-labelledby="lbl-modalidad">
+              <button type="button" data-modalidad="todas" class="activo" aria-pressed="true">Todas</button>
+              <button type="button" data-modalidad="sorpresa" aria-pressed="false">Paquete sorpresa</button>
+              <button type="button" data-modalidad="producto" aria-pressed="false">Producto específico</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="resumen-busqueda" id="resumen-busqueda" hidden></div>
+
+        <div class="rejilla rejilla--restaurantes" id="lista-restaurantes"></div>
+
+        <div id="bloque-productos-encontrados" hidden>
+          <h3 class="subtitulo-resultados">Productos que coinciden</h3>
+          <div class="rejilla rejilla--productos" id="lista-productos-encontrados"></div>
+        </div>
+
+        <div class="vacio" id="sin-resultados" hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5M8 11h6"/></svg>
+          <h3>No encontramos resultados</h3>
+          <p id="texto-sin-resultados">Prueba con otra palabra o quita los filtros.</p>
+          <button type="button" class="boton boton--primario" id="limpiar-filtros">Quitar búsqueda y filtros</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Preguntas frecuentes -->
+    <section class="seccion seccion--clara" id="preguntas" aria-labelledby="titulo-preguntas">
+      <div class="contenedor contenedor--angosto">
+        <header class="seccion__cabecera">
+          <span class="sobretitulo">Ayuda</span>
+          <h2 id="titulo-preguntas">Preguntas frecuentes</h2>
+        </header>
+        <div class="acordeon" id="lista-preguntas"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =============== VISTA: RESTAURANTE =============== -->
+  <main id="vista-restaurante" class="vista" hidden>
+    <div id="detalle-restaurante"></div>
+  </main>
+
+  <!-- =============== VISTA: CONFIRMAR PEDIDO =============== -->
+  <main id="vista-pedido" class="vista" hidden>
+    <div class="contenedor seccion">
+      <a href="#restaurantes" class="enlace-volver" id="volver-desde-pedido">← Seguir comprando</a>
+      <h1 class="titulo-pagina">Confirmar pedido</h1>
+      <div class="pedido__grid">
+        <form class="tarjeta formulario" id="form-pedido" novalidate>
+          <h2>Tus datos para recoger</h2>
+          <p class="nota">Solo pedimos lo necesario para identificar tu pedido. <strong>No se solicitan datos bancarios.</strong></p>
+
+          <div class="campo">
+            <label for="f-nombre">Nombre completo *</label>
+            <input id="f-nombre" name="nombre" type="text" autocomplete="name" placeholder="Ej. Ana López" required>
+            <span class="campo__error" id="e-nombre"></span>
+          </div>
+          <div class="campo">
+            <label for="f-telefono">Teléfono (10 dígitos) *</label>
+            <input id="f-telefono" name="telefono" type="tel" inputmode="numeric" autocomplete="tel" placeholder="Ej. 5512345678" required>
+            <span class="campo__error" id="e-telefono"></span>
+          </div>
+          <div class="campo">
+            <label for="f-correo">Correo electrónico (opcional)</label>
+            <input id="f-correo" name="correo" type="email" autocomplete="email" placeholder="Ej. ana@correo.com">
+            <span class="campo__error" id="e-correo"></span>
+          </div>
+          <div class="campo">
+            <label for="f-notas">Comentarios para el restaurante (opcional)</label>
+            <textarea id="f-notas" name="notas" rows="3" maxlength="200" placeholder="Ej. Llego a las 21:45. Sin cubiertos, por favor."></textarea>
+          </div>
+          <div class="campo campo--check">
+            <input id="f-acepto" name="acepto" type="checkbox">
+            <label for="f-acepto">Entiendo que es una <strong>demostración</strong>: no se cobrará dinero y debo recoger en el horario indicado.</label>
+          </div>
+          <span class="campo__error" id="e-acepto"></span>
+
+          <button type="submit" class="boton boton--primario boton--grande boton--bloque">Confirmar pedido de demostración</button>
+        </form>
+
+        <aside class="tarjeta resumen" id="resumen-pedido" aria-label="Resumen del pedido"></aside>
+      </div>
+    </div>
+  </main>
+
+  <!-- =============== VISTA: CONFIRMACIÓN =============== -->
+  <main id="vista-confirmacion" class="vista" hidden>
+    <div class="contenedor contenedor--angosto seccion" id="detalle-confirmacion"></div>
+  </main>
+
+  <!-- =============== PIE DE PÁGINA =============== -->
+  <footer class="pie">
+    <div class="contenedor pie__grid">
+      <div>
+        <a href="#inicio" class="marca marca--clara">
+          <img class="marca__logo" data-marca-logo src="img/marca/logo.png" alt="" width="44" height="44">
+          <span class="marca__nombre" data-marca-nombre="logo">Al <span class="marca__acento">Cierre</span></span>
+        </a>
+        <p class="pie__eslogan" data-texto="eslogan"></p>
+        <p class="pie__mision">Conectamos restaurantes con personas para que la comida en buen estado no termine en la basura.</p>
+      </div>
+      <div>
+        <h3>Explora</h3>
+        <ul>
+          <li><a href="#como-funciona">Cómo funciona</a></li>
+          <li><a href="#restaurantes">Restaurantes</a></li>
+          <li><a href="#preguntas">Preguntas frecuentes</a></li>
+          <li><button type="button" class="enlace" data-abrir-carrito>Ver mi carrito</button></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <ul>
+          <li><a id="pie-correo" href="mailto:hola@alcierre.mx">hola@alcierre.mx</a></li>
+          <li><span id="pie-instagram">@alcierre.mx</span> (ejemplo)</li>
+          <li><span id="pie-ciudad">Ciudad de México</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Sobre la demo</h3>
+        <p class="pie__texto">Sitio de demostración para un proyecto escolar: compras simuladas, sin cobros. Productos, precios y disponibilidad son ilustrativos; algunas fotografías son de referencia.</p>
+        <button type="button" class="boton boton--contorno-claro boton--chico" id="reiniciar-demo">Reiniciar demostración</button>
+      </div>
+    </div>
+    <div class="contenedor pie__legal">
+      <span>© <span id="anio"></span> <span data-marca-nombre>Al Cierre</span> · <span id="pie-escuela"></span></span>
+    </div>
+  </footer>
+
+  <!-- Navegación inferior para celular -->
+  <nav class="nav-movil" aria-label="Accesos rápidos">
+    <a href="#inicio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11 12 4l9 7v9h-6v-6H9v6H3z"/></svg>Inicio</a>
+    <a href="#restaurantes"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg>Restaurantes</a>
+    <button type="button" data-abrir-carrito class="nav-movil__carrito"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14l-1.5 10.5a2 2 0 0 1-2 1.5h-7a2 2 0 0 1-2-1.5L5 7Z"/><path d="M9 7V6a3 3 0 0 1 6 0v1"/></svg>Carrito<span class="contador contador--mini" id="contador-movil">0</span></button>
+    <a href="#preguntas"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5V14M12 17.5v.01"/></svg>Ayuda</a>
+  </nav>
+
+  <!-- =============== CARRITO (panel lateral) =============== -->
+  <div class="capa" id="capa-carrito" hidden></div>
+  <aside class="carrito" id="carrito" aria-label="Carrito de compras" aria-hidden="true">
+    <div class="carrito__cabecera">
+      <h2>Tu carrito</h2>
+      <button type="button" class="boton-icono" id="cerrar-carrito" aria-label="Cerrar carrito">✕</button>
+    </div>
+    <div class="carrito__cuerpo" id="carrito-cuerpo"></div>
+    <div class="carrito__pie" id="carrito-pie"></div>
+  </aside>
+
+  <!-- =============== VENTANA DE AVISO (otro restaurante, etc.) =============== -->
+  <div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
+    <div class="modal__caja">
+      <h2 id="modal-titulo"></h2>
+      <div id="modal-texto"></div>
+      <div class="modal__acciones" id="modal-acciones"></div>
+    </div>
+  </div>
+
+  <!-- Mensajes breves -->
+  <div class="avisos" id="avisos" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Primero los datos, después la lógica -->
+  <script src="js/datos.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
